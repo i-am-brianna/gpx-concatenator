@@ -1,6 +1,8 @@
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
 from typing import List
+from os import listdir
+from os.path import join
 
 def concatenate_gpx_files(input_files: List[str], output_file: str, enable_metadata: bool) -> None:
     root = ET.Element("gpx")
@@ -35,7 +37,7 @@ def prettify_xml(xml_string: str) -> str:
     compact_xml = "\n".join(line for line in pretty_xml.split("\n") if line.strip())
     return compact_xml
 
-input_files = ["file1.gpx", "file2.gpx"]
-output_file = "concatenated.gpx"
+input_files = [join("input", file) for file in listdir("input")]
+output_file = "output.gpx"
 
 concatenate_gpx_files(input_files, output_file, True)
