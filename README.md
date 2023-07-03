@@ -96,6 +96,7 @@ concatenate_gpx_files(input_files, output_file, True)
 The script constructs a list of input file paths by joining the "input" directory path with the files present in it. The output file path is set to "output.gpx". Finally, the `concatenate_gpx_files` function is called with the appropriate arguments to perform the concatenation and generate the output file.
 
 Feel free to modify the script as per your needs and file paths.
+
      _                 _          _                         
     (_)               | |        (_)                        
      _  __ _ _ __ ___ | |__  _ __ _  __ _ _ __  _ __   __ _ 
