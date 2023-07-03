@@ -9,7 +9,7 @@ This code is a Python script that concatenates multiple GPX (GPS Exchange Format
 ## Usage
 
 1. Place the GPX files you want to concatenate in the `input` directory.
-2. Run the script using Python: `python script.py`.
+2. Run the script using Python: `python concatenate_gpx.py`.
 
 ## Code Explanation
 
