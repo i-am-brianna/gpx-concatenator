@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gpx version="1.1" creator="OpenAI ChatGPT">
+  <metadata>
+    <name>File 1</name>
+    <desc>This is file 1.</desc>
+    <author>
+      <name>John Doe</name>
+      <email>john.doe@example.com</email>
+    </author>
+  </metadata>
+  <trk>
+    <name>Track 1</name>
+    <trkseg>
+      <trkpt lat="51.5007292" lon="-0.1246250">
+        <ele>10</ele>
+        <time>2023-07-01T10:00:00Z</time>
+      </trkpt>
+      <trkpt lat="51.5009000" lon="-0.1247750">
+        <ele>12</ele>
+        <time>2023-07-01T10:01:00Z</time>
+      </trkpt>
+    </trkseg>
+  </trk>
+</gpx>
