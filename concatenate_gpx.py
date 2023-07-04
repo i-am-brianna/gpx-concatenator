@@ -36,7 +36,7 @@ def prettify_xml(xml_string: str) -> str:
     compact_xml = "\n".join(line for line in pretty_xml.split("\n") if line.strip())
     return compact_xml
 
-input_files = [join("input", file) for file in listdir("input")]
+input_files = sorted([join("input", file) for file in listdir("input")])
 output_file = "output.gpx"
 
 concatenate_gpx_files(input_files, output_file, True)
