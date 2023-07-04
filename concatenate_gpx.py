@@ -11,14 +11,13 @@ def concatenate_gpx_files(input_files: List[str], output_file: str, enable_metad
     
     if enable_metadata:
         add_metadata(tree, root)
-    
-    track_segment = ET.Element("trkseg")
-    root.append(track_segment)
 
     for file in input_files:
         tree = ET.parse(file)
-        for trkpt in tree.findall(".//trkpt"):
-            track_segment.append(trkpt)
+        for trk in tree.findall(".//trk"):
+            trkpt_elements = trk.findall(".//trkpt")
+            if len(trkpt_elements) >= 2:  # Check if "trk" has at least 2 "trkpt" elements
+                root.append(trk)
 
     xml_string = ET.tostring(root, encoding="utf-8")
     prettified_xml = prettify_xml(xml_string)

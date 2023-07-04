@@ -12,14 +12,6 @@
         <ele>50</ele>
         <time>2023-07-04T12:00:00Z</time>
       </trkpt>
-      <trkpt lat="34.0523" lon="-118.2438">
-        <ele>55</ele>
-        <time>2023-07-04T12:01:00Z</time>
-      </trkpt>
-      <trkpt lat="34.0524" lon="-118.2439">
-        <ele>60</ele>
-        <time>2023-07-04T12:02:00Z</time>
-      </trkpt>
     </trkseg>
   </trk>
 </gpx>

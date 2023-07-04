@@ -1,23 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<gpx version="1.1" creator="OpenAI ChatGPT">
+<gpx>
   <metadata>
-    <name>File 1</name>
-    <desc>This is file 1.</desc>
-    <author>
-      <name>John Doe</name>
-      <email>john.doe@example.com</email>
-    </author>
+    <name>Test File 1</name>
+    <desc>Testing GPX File 1</desc>
   </metadata>
   <trk>
     <name>Track 1</name>
+    <type>Hiking</type>
     <trkseg>
-      <trkpt lat="51.5007292" lon="-0.1246250">
+      <trkpt lat="40.7128" lon="-74.0060">
         <ele>10</ele>
-        <time>2023-07-01T10:00:00Z</time>
+        <time>2023-07-04T10:00:00Z</time>
       </trkpt>
-      <trkpt lat="51.5009000" lon="-0.1247750">
-        <ele>12</ele>
-        <time>2023-07-01T10:01:00Z</time>
+      <trkpt lat="40.7129" lon="-74.0061">
+        <ele>15</ele>
+        <time>2023-07-04T10:01:00Z</time>
       </trkpt>
     </trkseg>
   </trk>
