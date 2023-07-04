@@ -36,13 +36,12 @@ def concatenate_gpx_files(input_files: List[str], output_file: str, enable_metad
     if enable_metadata:
         add_metadata(tree, root)
 
-    track_segment = ET.Element("trkseg")
-    root.append(track_segment)
-
     for file in input_files:
         tree = ET.parse(file)
-        for trkpt in tree.findall(".//trkpt"):
-            track_segment.append(trkpt)
+        for trk in tree.findall(".//trk"):
+            trkpt_elements = trk.findall(".//trkpt")
+            if len(trkpt_elements) >= 2:  # Check if "trk" has at least 2 "trkpt" elements
+                root.append(trk)
 
     xml_string = ET.tostring(root, encoding="utf-8")
     prettified_xml = prettify_xml(xml_string)
@@ -55,7 +54,7 @@ The `concatenate_gpx_files` function takes a list of input file paths (`input_fi
 
 The function creates a root element for the new GPX file and parses the first input file to obtain the base structure. If `enable_metadata` is `True`, the `add_metadata` function is called to add metadata to the root element.
 
-A track segment element is created and appended to the root. The function iterates over each input file, parses it, and appends all `trkpt` elements to the track segment.
+For each input file, the function parses the file and iterates over each `<trk>` element. It then checks if the `<trk>` element contains at least 2 `<trkpt>` elements. If it does, the `<trk>` element is appended to the root.
 
 The root element is converted to an XML string and prettified using the `prettify_xml` function. The prettified XML is then written to the output file.
 
@@ -102,6 +101,6 @@ Feel free to modify the script as per your needs and file paths.
      _  __ _ _ __ ___ | |__  _ __ _  __ _ _ __  _ __   __ _ 
     | |/ _` | '_ ` _ \| '_ \| '__| |/ _` | '_ \| '_ \ / _` |
     | | (_| | | | | | | |_) | |  | | (_| | | | | | | | (_| |
-    |_|\__,_|_| |_| |_|_.__/|_|  |_|\__,_|_| |_|_| |_|\__,_|
+|_|\__,_|_| |_| |_|_.__/|_|  |_|\__,_|_| |_|_| |_|\__,_|
                                                         
                                                         
