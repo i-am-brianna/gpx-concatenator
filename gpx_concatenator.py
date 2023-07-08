@@ -4,15 +4,33 @@ from typing import List
 from gpx_file import GPXFile
 from gpx_colorizer import GPXColorizer
 
-
 class GPXConcatenator:
+    """
+    A class that concatenates multiple GPX files into a single GPX file.
+    """
+
     def __init__(self, input_files: List[str], output_file: str, enable_metadata: bool, enable_coloring: bool = False):
+        """
+        Initializes an instance of GPXConcatenator.
+
+        Args:
+            input_files (List[str]): List of input file paths to concatenate.
+            output_file (str): Output file path to save the concatenated GPX.
+            enable_metadata (bool): Flag to enable metadata in the output GPX.
+            enable_coloring (bool, optional): Flag to enable track coloring. Defaults to False.
+        """
         self.input_files = input_files
         self.output_file = output_file
         self.enable_metadata = enable_metadata
         self.enable_coloring = enable_coloring
 
     def concatenate_files(self):
+        """
+        Concatenates the input GPX files into a single GPX file.
+
+        Returns:
+            None
+        """
         root = self._create_gpx_root()
         colorizer = GPXColorizer()  # Create a single colorizer instance
 
@@ -36,10 +54,25 @@ class GPXConcatenator:
             f.write(prettified_xml)
 
     def _create_gpx_root(self) -> ET.Element:
+        """
+        Creates the root element of the GPX XML.
+
+        Returns:
+            ET.Element: The root element of the GPX XML.
+        """
         root = ET.Element("gpx")
         return root
 
     def _prettify_xml(self, xml_string: str) -> str:
+        """
+        Prettifies the XML string.
+
+        Args:
+            xml_string (str): The XML string to prettify.
+
+        Returns:
+            str: The prettified XML string.
+        """
         parsed_xml = minidom.parseString(xml_string)
         pretty_xml = parsed_xml.toprettyxml(indent="  ")
         compact_xml = "\n".join(

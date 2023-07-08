@@ -2,13 +2,28 @@ import xml.etree.ElementTree as ET
 import colorsys
 from typing import List
 
-
 class GPXColorizer:
+    """
+    A class that colorizes GPX tracks in XML format.
+    """
+
     def __init__(self):
+        """
+        Initializes an instance of GPXColorizer.
+        """
         self.color_dict = {}
         self.color_index = 0
 
     def colorize_tracks(self, tracks: List[ET.Element]) -> None:
+        """
+        Colorizes the tracks with distinct colors.
+
+        Args:
+            tracks (List[ET.Element]): A list of track elements.
+
+        Returns:
+            None
+        """
         num_distinct_colors = len(tracks)
         distinct_colors = self._generate_distinct_colors(num_distinct_colors)
 
@@ -23,6 +38,15 @@ class GPXColorizer:
                 self._add_color_extensions(trk, color)
 
     def _generate_distinct_colors(self, num_colors: int) -> List[str]:
+        """
+        Generates a list of distinct colors.
+
+        Args:
+            num_colors (int): Number of distinct colors to generate.
+
+        Returns:
+            List[str]: A list of distinct colors in hexadecimal format.
+        """
         distinct_colors = []
         for i in range(num_colors):
             hue = i / num_colors
@@ -38,14 +62,32 @@ class GPXColorizer:
         return distinct_colors
 
     def _add_color_extensions(self, trk: ET.Element, color: str) -> None:
+        """
+        Adds color extensions to a track element.
+
+        Args:
+            trk (ET.Element): The track element.
+            color (str): The color value to add.
+
+        Returns:
+            None
+        """
         extensions = ET.Element('extensions')
         gpx_style_line = ET.SubElement(extensions, 'gpx_style:line')
         color_element = ET.SubElement(gpx_style_line, 'color')
         color_element.text = color
         trk.append(extensions)
-        
 
     def add_coloring_metadata(self, root: ET.Element) -> None:
+        """
+        Adds coloring metadata to the root element.
+
+        Args:
+            root (ET.Element): The root element of the GPX XML.
+
+        Returns:
+            None
+        """
         namespace_mapping = {
             'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
             'xmlns': 'http://www.topografix.com/GPX/1/1',
