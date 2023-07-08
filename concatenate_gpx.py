@@ -48,7 +48,6 @@ def add_coloring_metadata(root: ET.Element) -> None:
         'xmlns:gpxx': 'http://www.garmin.com/xmlschemas/GpxExtensions/v3',
         'xmlns:gpx_style': 'http://www.topografix.com/GPX/gpx_style/0/2',
         'version': '1.1',
-        'creator': 'https://gpx.studio'
     }
     root.attrib.update(namespace_mapping)
 
