@@ -18,15 +18,23 @@ The project consists of the following files:
 
 To use this project, follow these steps:
 
-1. Place the GPX files that you want to concatenate in the `input` directory.
+1. Place the GPX files that you want to concatenate in the `input` directory or specify a different input directory using the `--input-dir` command-line parameter.
 
-2. Update the `input_files` list in the `main.py` file to include the desired input file names or customize the logic to retrieve the input files.
+2. Run the `main.py` script using a Python interpreter and specify the desired command-line parameters. Here are some examples:
 
-3. Specify the output file name in the `output_file` variable in the `main.py` file.
+   ```shell
+   # Run the script with default parameters
+   python main.py
 
-4. Run the `main.py` script using a Python interpreter.
+   # Specify a different input directory
+   python main.py --input-dir my_input_dir
 
-5. The concatenated and colorized GPX file will be generated as `output.gpx` in the project directory.
+   # Specify a different output file name
+   python main.py --output-file my_output.gpx
+
+   # Enable metadata and coloring
+   python main.py --enable-metadata --enable-coloring
+The concatenated and colorized GPX file will be generated based on the specified parameters.
 
 ## Requirements
 
