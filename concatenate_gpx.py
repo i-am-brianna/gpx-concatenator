@@ -5,6 +5,7 @@ from os import listdir
 from os.path import join
 import colorsys
 
+
 def generate_distinct_colors(num_colors: int) -> List[str]:
     distinct_colors = []
     for i in range(num_colors):
@@ -20,6 +21,7 @@ def generate_distinct_colors(num_colors: int) -> List[str]:
         distinct_colors.append(hex_color)
     return distinct_colors
 
+
 def add_color_extensions(trk: ET.Element, color: str) -> None:
     extensions = ET.Element('extensions')
     gpx_style_line = ET.SubElement(extensions, 'gpx_style:line')
@@ -27,11 +29,21 @@ def add_color_extensions(trk: ET.Element, color: str) -> None:
     color_element.text = color
     trk.append(extensions)
 
+
 def add_coloring_metadata(root: ET.Element) -> None:
     namespace_mapping = {
         'xmlns:xsi': 'http://www.w3.org/2001/XMLSchema-instance',
         'xmlns': 'http://www.topografix.com/GPX/1/1',
-        'xsi:schemaLocation': 'http://www.topografix.com/GPX/1/1 http://www.topografix.com/GPX/1/1/gpx.xsd http://www.garmin.com/xmlschemas/GpxExtensions/v3 http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd http://www.garmin.com/xmlschemas/TrackPointExtension/v1 http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd http://www.topografix.com/GPX/gpx_style/0/2 http://www.topografix.com/GPX/gpx_style/0/2/gpx_style.xsd',
+        'xsi:schemaLocation': (
+            'http://www.topografix.com/GPX/1/1 '
+            'http://www.topografix.com/GPX/1/1/gpx.xsd '
+            'http://www.garmin.com/xmlschemas/GpxExtensions/v3 '
+            'http://www.garmin.com/xmlschemas/GpxExtensionsv3.xsd '
+            'http://www.garmin.com/xmlschemas/TrackPointExtension/v1 '
+            'http://www.garmin.com/xmlschemas/TrackPointExtensionv1.xsd '
+            'http://www.topografix.com/GPX/gpx_style/0/2 '
+            'http://www.topografix.com/GPX/gpx_style/0/2/gpx_style.xsd'
+        ),
         'xmlns:gpxtpx': 'http://www.garmin.com/xmlschemas/TrackPointExtension/v1',
         'xmlns:gpxx': 'http://www.garmin.com/xmlschemas/GpxExtensions/v3',
         'xmlns:gpx_style': 'http://www.topografix.com/GPX/gpx_style/0/2',
@@ -40,16 +52,19 @@ def add_coloring_metadata(root: ET.Element) -> None:
     }
     root.attrib.update(namespace_mapping)
 
+
 def create_gpx_root(enable_coloring: bool) -> ET.Element:
     root = ET.Element("gpx")
     if enable_coloring:
         add_coloring_metadata(root)
     return root
 
+
 def add_metadata(tree: ET.ElementTree, output: ET.Element) -> None:
     metadata = tree.find("metadata")
     if metadata is not None:
         output.append(metadata)
+
 
 def concatenate_gpx_files(input_files: List[str], output_file: str, enable_metadata: bool, enable_coloring: bool = False) -> None:
     root = create_gpx_root(enable_coloring)
@@ -87,13 +102,17 @@ def concatenate_gpx_files(input_files: List[str], output_file: str, enable_metad
     with open(output_file, "w") as f:
         f.write(prettified_xml)
 
+
 def prettify_xml(xml_string: str) -> str:
     parsed_xml = minidom.parseString(xml_string)
     pretty_xml = parsed_xml.toprettyxml(indent="  ")
-    compact_xml = "\n".join(line for line in pretty_xml.split("\n") if line.strip())
+    compact_xml = "\n".join(
+        line for line in pretty_xml.split("\n") if line.strip())
     return compact_xml
+
 
 input_files = sorted([join("input", file) for file in listdir("input")])
 output_file = "output.gpx"
 
-concatenate_gpx_files(input_files, output_file, enable_metadata=True, enable_coloring=True)
+concatenate_gpx_files(input_files, output_file,
+                      enable_metadata=True, enable_coloring=True)
