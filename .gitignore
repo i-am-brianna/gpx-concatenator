@@ -1,0 +1,23 @@
+# Ignore compiled Python files
+*.pyc
+__pycache__/
+
+# Ignore built distribution files
+dist/
+build/
+*.egg-info/
+
+# Ignore IDE and editor files
+.idea/
+.vscode/
+*.code-workspace
+
+# Ignore local development settings
+.env
+
+# Ignore system-specific files
+.DS_Store
+Thumbs.db
+
+# Ignore project dependencies
+venv/

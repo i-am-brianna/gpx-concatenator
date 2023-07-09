@@ -1,6 +1,6 @@
 import os
 import argparse
-from gpx_concatenator import GPXConcatenator
+from gpx_concatenator.gpx_concatenator import GPXConcatenator
 
 def main():
     # Create an argument parser

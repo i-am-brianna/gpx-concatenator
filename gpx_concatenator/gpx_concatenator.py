@@ -1,8 +1,8 @@
 import xml.etree.ElementTree as ET
 import xml.dom.minidom as minidom
 from typing import List
-from gpx_file import GPXFile
-from gpx_colorizer import GPXColorizer
+from gpx_concatenator.gpx_file import GPXFile
+from gpx_concatenator.gpx_colorizer import GPXColorizer
 
 class GPXConcatenator:
     """
