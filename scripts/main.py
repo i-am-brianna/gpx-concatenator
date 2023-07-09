@@ -14,7 +14,7 @@ def main():
     args = parser.parse_args()
 
     # Get the input files from the specified directory
-    input_files = sorted([os.path.join(args.input_dir, file) for file in os.listdir(args.input_dir)])
+    input_files = sorted([os.path.join(args.input_dir, file) for file in os.listdir(args.input_dir) if file.endswith('.gpx')])
 
     # Create an instance of GPXConcatenator with the specified parameters
     concatenator = GPXConcatenator(
