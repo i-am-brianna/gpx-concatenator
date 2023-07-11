@@ -27,24 +27,24 @@ pip install gpx-concatenator
 Once installed, you can use the `gpx-concatenator` command to concatenate and colorize GPX files. Here's an example usage:
 
 ```
-gpx-concatenator --input-dir <input-directory> --output-file <output-file-name> --enable-metadata --enable-coloring
+gpx-concatenator -i <input-directory> -o <output-file-name> -m -c
 ```
 
-Replace `<input-directory>` with the directory containing the input GPX files, and `<output-file-name>` with the desired name of the output GPX file. The `--enable-metadata` flag enables metadata in the output file, and the `--enable-coloring` flag enables coloring of the tracks.
+Replace `<input-directory>` with the directory containing the input GPX files, and `<output-file-name>` with the desired name of the output GPX file. The `-m` flag enables metadata in the output file, and the `-c` flag enables coloring of the tracks.
 
 ### Command-line Arguments
 
 The following command-line arguments are available:
 
-- `--input-dir`: Specifies the directory containing the input GPX files. The default value is `input`.
+- `-i, --input-dir`: Specifies the directory containing the input GPX files. The default value is `input`.
 
-- `--output-file`: Specifies the name of the output GPX file. The default value is `output.gpx`.
+- `-o, --output-file`: Specifies the name of the output GPX file. The default value is `output.gpx`.
 
-- `--enable-metadata`: Enables metadata in the output GPX file. This is an optional flag.
+- `-m, --enable-metadata`: Enables metadata in the output GPX file. This is an optional flag.
 
-- `--enable-coloring`: Enables coloring of the tracks in the output GPX file. This is an optional flag.
+- `-c, --enable-coloring`: Enables coloring of the tracks in the output GPX file. This is an optional flag.
 
-For more information on available command-line arguments, use the `--help` flag:
+For more information on available command-line arguments, use the `-h, --help` flag:
 
 ```
 gpx-concatenator --help
@@ -62,12 +62,9 @@ The concatenated GPX file will be created with the specified name in the current
 
 This project is licensed under the MIT License.
 
-
      _                 _          _                         
     (_)               | |        (_)                        
      _  __ _ _ __ ___ | |__  _ __ _  __ _ _ __  _ __   __ _ 
     | |/ _` | '_ ` _ \| '_ \| '__| |/ _` | '_ \| '_ \ / _` |
     | | (_| | | | | | | |_) | |  | | (_| | | | | | | | (_| |
     |_|\__,_|_| |_| |_|_.__/|_|  |_|\__,_|_| |_|_| |_|\__,_|
-                                                        
-                                                        
