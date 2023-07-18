@@ -6,7 +6,7 @@ import argcomplete
 def main():
     # Create an argument parser
     parser = argparse.ArgumentParser(description='GPX Concatenator')
-    parser.add_argument('-i', '--input-dir', default='input', help='Directory containing input files', type=argcomplete.completers.DirectoryCompleter())
+    parser.add_argument('-i', '--input-dir', default='input', help='Directory containing input files').completer = argcomplete.completers.DirectoriesCompleter()
     parser.add_argument('-o', '--output-file', default='output.gpx', help='Output file name', type=argparse.FileType('w'))
     parser.add_argument('-m', '--enable-metadata', action='store_true', help='Enable metadata in the output file')
     parser.add_argument('-c', '--enable-coloring', action='store_true', help='Enable coloring in the output file')
