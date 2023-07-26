@@ -42,7 +42,9 @@ class GPXConcatenator:
 
             tracks = gpx_file.extract_tracks()
             for trk in tracks:
-                root.append(trk)
+                trkpt_elements = trk.findall(".//trkpt")
+                if len(trkpt_elements) >= 2:  # Check if "trk" has at least 2 "trkpt" elements
+                    root.append(trk)
 
         if self.enable_coloring:
             colorizer.add_coloring_metadata(root)

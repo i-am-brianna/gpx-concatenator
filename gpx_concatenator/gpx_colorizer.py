@@ -24,7 +24,7 @@ class GPXColorizer:
         Returns:
             None
         """
-        num_distinct_colors = len(tracks)
+        num_distinct_colors = len(tracks) + 1
         distinct_colors = self._generate_distinct_colors(num_distinct_colors)
 
         for trk in tracks:
