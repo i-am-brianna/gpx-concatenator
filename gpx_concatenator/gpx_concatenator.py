@@ -34,6 +34,10 @@ class GPXConcatenator:
         root = self._create_gpx_root()
         colorizer = GPXColorizer()  # Create a single colorizer instance
 
+        if self.enable_metadata:
+            metadata = GPXFile(self.input_files[0]).extract_metadata()
+            root.append(metadata)
+
         for file_path in self.input_files:
             gpx_file = GPXFile(file_path)
             if self.enable_coloring:
@@ -48,7 +52,7 @@ class GPXConcatenator:
 
         if self.enable_coloring:
             colorizer.add_coloring_metadata(root)
-
+            
         xml_string = ET.tostring(root, encoding="utf-8")
         prettified_xml = self._prettify_xml(xml_string)
 
